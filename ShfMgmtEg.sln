@@ -1,8 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShfMgmtEgApi", "ShfMgmtEgApi\ShfMgmtEgApi.csproj", "{8BB392DC-3451-45B3-BB12-BDA33ED24B61}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShfMgmtEg.Api", "ShfMgmtEg.Api\ShfMgmtEg.Api.csproj", "{8BB392DC-3451-45B3-BB12-BDA33ED24B61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShfMgmtEgMvc", "ShfMgmtEgMvc\ShfMgmtEgMvc.csproj", "{E7323CD8-0CF0-4C38-A117-8F239D9EA1EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShfMgmtEg.Mvc", "ShfMgmtEg.Mvc\ShfMgmtEg.Mvc.csproj", "{E7323CD8-0CF0-4C38-A117-8F239D9EA1EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShfMgmtEg.Core", "ShfMgmtEg.Core\ShfMgmtEg.Core.csproj", "{68465704-2EAD-46E4-8982-4E89B0AD382C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShfMgmtEg.Service", "ShfMgmtEg.Service\ShfMgmtEg.Service.csproj", "{4D18E10A-E4C0-4200-8532-A298B5033711}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShfMgmtEg.Data", "ShfMgmtEg.Data\ShfMgmtEg.Data.csproj", "{917C34D1-2594-4C3D-B06E-4C73A437549C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +24,17 @@ Global
 		{E7323CD8-0CF0-4C38-A117-8F239D9EA1EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7323CD8-0CF0-4C38-A117-8F239D9EA1EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7323CD8-0CF0-4C38-A117-8F239D9EA1EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68465704-2EAD-46E4-8982-4E89B0AD382C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68465704-2EAD-46E4-8982-4E89B0AD382C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68465704-2EAD-46E4-8982-4E89B0AD382C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68465704-2EAD-46E4-8982-4E89B0AD382C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D18E10A-E4C0-4200-8532-A298B5033711}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D18E10A-E4C0-4200-8532-A298B5033711}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D18E10A-E4C0-4200-8532-A298B5033711}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D18E10A-E4C0-4200-8532-A298B5033711}.Release|Any CPU.Build.0 = Release|Any CPU
+		{917C34D1-2594-4C3D-B06E-4C73A437549C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{917C34D1-2594-4C3D-B06E-4C73A437549C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{917C34D1-2594-4C3D-B06E-4C73A437549C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{917C34D1-2594-4C3D-B06E-4C73A437549C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
