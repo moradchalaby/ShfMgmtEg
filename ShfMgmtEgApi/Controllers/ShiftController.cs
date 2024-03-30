@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ShfMgmtEgApi.Core.Entities;
+using ShfMgmtEgApi.Core.Entities.Models;
 
 namespace ShfMgmtEgApi.Controllers;
 
@@ -8,25 +8,25 @@ namespace ShfMgmtEgApi.Controllers;
 public class ShiftController : Controller
 {
 
-    private static List<ShiftEntity> _shiftEntity = new List<ShiftEntity>
+    private static List<Shift> _shiftEntity = new List<Shift>
     {
-        new ShiftEntity{Id=1,Name = "Shift 1"},
-        new ShiftEntity{Id=2,Name = "Shift 2"},
-        new ShiftEntity{Id=3,Name = "Shift 3"}
+        new Shift{Id=new Guid().ToString(),Name = "Shift 1"},
+        new Shift{Id=new Guid().ToString(),Name = "Shift 2"},
+        new Shift{Id=new Guid().ToString(),Name = "Shift 3"}
     };
     
    
     // GET,
     [HttpGet]
     [Route("GetAll")]
-    public ActionResult<List<ShiftEntity>> Get()
+    public ActionResult<List<Shift>> Get()
     {
         return Ok(_shiftEntity);
     }
     
     // GET
     [HttpGet("{id}")]
-    public ActionResult<ShiftEntity> GetSingle(int id)
+    public ActionResult<Shift> GetSingle(string id)
     {
         var shift = _shiftEntity.FirstOrDefault(x => x.Id == id);
         return Ok(shift);

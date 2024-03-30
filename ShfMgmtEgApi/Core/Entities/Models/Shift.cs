@@ -1,8 +1,8 @@
 ﻿using ShfMgmtEgApi.Core.Enums;
 
-namespace ShfMgmtEgApi.Core.Entities;
+namespace ShfMgmtEgApi.Core.Entities.Models;
 
-public class ShiftEntity : BaseEntity
+public class Shift : BaseEntity
 {
     
     public string Name { get; set; }
@@ -13,9 +13,12 @@ public class ShiftEntity : BaseEntity
     
     public int TeamId { get; set; }
     
-    public TeamEntity Team { get; set; }
+    public Team Team { get; set; }
     
-    public List<EmployeeEntity> Employees { get; set; }
+    public string ManagerId { get; set; }
+    public Employee Manager { get; set; }
+    
+    public List<Employee> Employees { get; set; }
     
     
     public string Description { get; set; }

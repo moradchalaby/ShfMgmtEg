@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 //Service Katmanının kullanılabilmesi için buraya ekliyoruz.
 //Scoped ile eklersek her seferinde yeni bir instance oluşturur.
 //Singleton ile eklersek her seferinde aynı instance kullanılır.

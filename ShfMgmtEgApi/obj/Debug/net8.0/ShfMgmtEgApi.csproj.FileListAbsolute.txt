@@ -32,3 +32,6 @@ C:\Users\CHALABY\Desktop\Develop\dotNet\ShfMgmtEg\ShfMgmtEgApi\obj\Debug\net8.0\
 C:\Users\CHALABY\Desktop\Develop\dotNet\ShfMgmtEg\ShfMgmtEgApi\obj\Debug\net8.0\ShfMgmtEgApi.genruntimeconfig.cache
 C:\Users\CHALABY\Desktop\Develop\dotNet\ShfMgmtEg\ShfMgmtEgApi\obj\Debug\net8.0\ref\ShfMgmtEgApi.dll
 C:\Users\CHALABY\Desktop\Develop\dotNet\ShfMgmtEg\ShfMgmtEgApi\bin\Debug\net8.0\Bogus.dll
+C:\Users\CHALABY\Desktop\Develop\dotNet\ShfMgmtEg\ShfMgmtEgApi\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\CHALABY\Desktop\Develop\dotNet\ShfMgmtEg\ShfMgmtEgApi\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\CHALABY\Desktop\Develop\dotNet\ShfMgmtEg\ShfMgmtEgApi\obj\Debug\net8.0\ShfMgmtEgApi.sourcelink.json

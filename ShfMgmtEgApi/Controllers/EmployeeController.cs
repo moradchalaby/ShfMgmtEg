@@ -1,7 +1,7 @@
 ﻿using Bogus;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using ShfMgmtEgApi.Core.Entities;
+using ShfMgmtEgApi.Core.Dtos.Employee;
+using ShfMgmtEgApi.Core.Entities.Models;
 using ShfMgmtEgApi.Core.Response;
 using ShfMgmtEgApi.Services.EmployeeService;
 
@@ -21,37 +21,49 @@ public class EmployeeController : Controller
     
     // GET,
     [HttpGet]
-    public async Task<ActionResult<ServiceResponse<List<EmployeeEntity>>>> Get()
+    public async Task<ActionResult<ServiceResponse<List<Employee>>>> Get()
     {
-        return Ok(_employeeService.GetAllEmployee());
+        return Ok(await _employeeService.GetAllEmployee());
     }
 
     // GET
     [HttpGet("{id}")]
-    public async Task<ActionResult<ServiceResponse<EmployeeEntity>>> GetSingle(string id)
+    public async Task<ActionResult<ServiceResponse<Employee>>> GetSingle(string id)
     {
-        
-       return  Ok(_employeeService.GetEmployeeById(id));
+       return  Ok(await _employeeService.GetEmployeeById(id));
     }
     
     [HttpPost]
-    public async Task<ActionResult<ServiceResponse<EmployeeEntity>>> Add(EmployeeEntity newEmployee)
+    public async Task<ActionResult<ServiceResponse<Employee>>> Add(AddEmployee newEmployee)
     {
-        if (newEmployee.Id == "faker")
-        {
-            var employeeFaker = new Faker<EmployeeEntity>()
-                .RuleFor(e => e.Id, f => f.Random.Guid().ToString())
-                .RuleFor(e => e.FullName, f => f.Name.FullName())
-                .RuleFor(x => x.Email, f => f.Internet.Email())
-                .RuleFor(x => x.PhoneNumber, f => f.Phone.PhoneNumber())
-                .RuleFor(x => x.UserName, f => f.Internet.UserName());
+        //if (newEmployee != null) return Ok(await _employeeService.AddEmployee(newEmployee));
+        var userFaker = new Faker<User>()
+            .RuleFor(x=>x.Id, f=>f.Random.Guid().ToString())
+            .RuleFor(x => x.FullName, f => f.Name.FullName())
+            .RuleFor(x => x.Email, f => f.Internet.Email())
+            .RuleFor(x => x.PhoneNumber, f => f.Phone.PhoneNumber())
+            .RuleFor(x => x.UserName, f => f.Internet.UserName());
+        var newUser = userFaker.Generate();
+        var employeeFaker = new Faker<AddEmployee>();
 
-            newEmployee = employeeFaker.Generate();
+        newEmployee = employeeFaker.Generate();
+        newEmployee.UserId = newUser.Id;
             
-            return Ok(_employeeService.AddEmployee(newEmployee));
-        }
+        return  Ok(await _employeeService.AddEmployee(newEmployee));
 
-        return BadRequest();
     }
+    
+    [HttpPut]
+    public async Task<ActionResult<ServiceResponse<Employee>>> Update(UpdateEmployee updatedEmployee)
+    {
+        return Ok(await _employeeService.UpdateEmployee(updatedEmployee));
+    }
+    
+    [HttpDelete("{id}")]
+    public async Task<ActionResult<ServiceResponse<Employee>>> Delete(string id, string deletedBy)
+    {
+        return Ok(await _employeeService.DeleteEmployee(id, deletedBy));
+    }
+    
     
 }

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ShfMgmtEgApi.Core.Entities;
+using ShfMgmtEgApi.Core.Entities.Models;
 
 namespace ShfMgmtEgApi.Controllers;
 
@@ -10,12 +10,12 @@ public class TeamController : Controller
 
     
     
-    private static TeamEntity _teamEntity = new TeamEntity();
+    private static Team _team = new Team();
     // GET,
     [HttpGet]
-    public ActionResult<TeamEntity> ShiftGet()
+    public ActionResult<Team> ShiftGet()
     {
-        return Ok(_teamEntity);
+        return Ok(_team);
     }
     
   
