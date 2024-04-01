@@ -10,6 +10,7 @@ public class AddTeam
     public GetEmployee Manager { get; set; }
     public int ManagerId { get; set; }
     public List<GetEmployee> Employees { get; set; }
+    public int? ShiftId { get; set; }
     
     
 }

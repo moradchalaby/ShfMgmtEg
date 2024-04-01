@@ -8,9 +8,9 @@ public class GetEmployee
     public int Id { get; set; }
     public int UserId { get; set; }
     public int TeamId { get; set; }
+    public string Code { get; set; }
     public bool IsManager { get; set; }
-    public GetUser User { get; set; }
-    public GetTeam Team { get; set; }
+    public Entities.Models.User User { get; set; }
     public string Title { get; set; }
     public bool IsDeleted { get; set; } = false;
 }

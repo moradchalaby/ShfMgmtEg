@@ -2,6 +2,7 @@
 
 public enum Title
 {
+    None = 0,
     Manager = 1,
     Employee = 2,
     Engineer = 3,

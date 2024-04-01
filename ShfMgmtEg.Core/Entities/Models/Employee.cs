@@ -2,6 +2,7 @@
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using ShfMgmtEg.Core.Entities.Models.Relationships;
 using ShfMgmtEg.Core.Enums;
 
 namespace ShfMgmtEg.Core.Entities.Models;
@@ -9,6 +10,7 @@ namespace ShfMgmtEg.Core.Entities.Models;
 public class Employee : BaseEntity
 {
 
+    public string Code { get; set; }
     public Title Title { get; set; }
     public int? TeamId { get; set; }
     

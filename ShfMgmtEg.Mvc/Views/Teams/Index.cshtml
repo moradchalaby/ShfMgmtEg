@@ -1,0 +1,49 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>title</h2>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <p>
+                <a asp-action="" class="btn btn-primary">Create New</a>
+            </p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+adf                        </th>
+                        <th>
+                            asdf
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.Name
+                            </td>
+                            <td>
+                                @item.Description
+                            </td>
+                            <td>
+                                <a asp-action="" asp-route-id="@item.Id">Edit</a> |
+                                <a asp-action="" asp-route-id="@item.Id">Details</a> |
+                                <a asp-action="" asp-route-id="@item.Id">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

@@ -8,7 +8,7 @@ public interface IAuthService
 {
     Task<ServiceResponse<int>> Register(RegisterUser user);
     Task<ServiceResponse<string>> Login(LoginUser user);
-    Task<bool> UserExists(string username);
     Task<ServiceResponse<string>> ChangePassword(int id, string currentPassword, string newPassword);
     Task<ServiceResponse<string>> ResetPassword(int id, string newPassword);
+    
 }

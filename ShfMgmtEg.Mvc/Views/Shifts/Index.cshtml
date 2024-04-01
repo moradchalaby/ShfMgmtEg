@@ -1,0 +1,15 @@
+﻿@model dynamic
+@inject IConfiguration _Configuration
+@inject IHttpContextAccessor _httpContextAccessor;
+
+@{
+    var baseUrl =  _Configuration.GetSection("ConnectionApi").GetSection("BaseUrl").Value;
+    var token = _httpContextAccessor.HttpContext?.Session.GetString("AccessToken");
+    
+}
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+<h2>@Model.Content.ToString()</h2>
+<h2>@token</h2>

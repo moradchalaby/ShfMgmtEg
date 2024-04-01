@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
+using ShfMgmtEg.Core.Entities.Models.Relationships;
 using ShfMgmtEg.Core.Enums;
 
 namespace ShfMgmtEg.Core.Entities.Models;
@@ -30,9 +31,7 @@ public class User : BaseEntity
     public string? RefreshToken { get; set; }
     public DateTime? RefreshTokenExpiryTime { get; set; }
     
-    public int? RoleId { get; set; }
-    public Role? Role { get; set; }
     
-    public ICollection<Permission>? Permissions { get; set; }
+    public ICollection<RoleUser>? RoleUser { get; set; }
     
 }

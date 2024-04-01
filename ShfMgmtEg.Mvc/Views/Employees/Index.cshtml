@@ -1,0 +1,112 @@
+﻿@using System.Text.Json
+@model dynamic
+@inject IConfiguration Configuration
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+    var baseUrl = Configuration.GetSection("ConnectionApi").GetSection("BaseUrl").Value;
+}
+
+<h2>title</h2>
+
+<div id="example">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="grid">
+    </div>
+ data-toggle="modal" data-target="#exampleModal"
+    <script>
+        $(document).ready(function() {
+            
+              var crudServiceBaseUrl = "@baseUrl",
+                            dataSource = new kendo.data.DataSource({
+                                transport: {
+                                    read:  {
+                                        url: crudServiceBaseUrl + "/Employee",
+                                        dataType: "jsonp"
+                                    },
+                                    update: {
+                                        url: crudServiceBaseUrl + "/Employee",
+                                        dataType: "jsonp",
+                                        contentType: "application/json",
+                                        type: "PUT"
+                                    },
+                                    destroy: {
+                                        url: crudServiceBaseUrl + "/Products/Destroy",
+                                        dataType: "jsonp"
+                                    },
+                                    create: {
+                                        url: crudServiceBaseUrl + "/Products/Create",
+                                        dataType: "jsonp"
+                                    },
+                                    parameterMap: function(options, operation) {
+                                        if (operation !== "read" && options.models) {
+                                            return {models: kendo.stringify(options.models)};
+                                        }
+                                    }
+                                },
+                                batch: true,
+                                pageSize: 20,
+                                schema: {
+                                    model: {
+                                        id: "Id",
+                                        fields: {
+                                            FirstName: { editable: true, nullable: true },
+                                            UserId: { validation: { required: true } },
+                                            Id: { type: "number", validation: { required: true, min: 1} },
+                                        }
+                                    }
+                                }
+                            });
+     
+            $("#grid").kendoGrid({
+                dataSource: {
+                    data:(@Html.Raw(JsonSerializer.Serialize(Model))),
+                    
+                    pageSize: 20
+                },
+                toolbar: ["create"],
+                height: 550,
+                scrollable: true,
+                sortable: true,
+                filterable: true,
+                pageable: {
+                    input: true,
+                    numeric: false
+                },
+                columns: [
+                    
+                    { field: "User.FirstName", title: "Ad", format: "{0:c}", width: "130px" },
+                    { field: "User.LastName", title: "Soyad", width: "130px" },
+                    { field: "User.Status",title: "Durum", width: "130px" },
+                    { field: "User.Email", title: "Email", width: "130px" },
+                    { field: "User.Phone", title: "Telefon", width: "130px" },]
+             
+            });
+           $(".k-grid-save-command").click(function(){
+               console.log("save");
+                $("#exampleModal").modal("show");
+            });
+              
+        });
+      
+    </script>
+</div>

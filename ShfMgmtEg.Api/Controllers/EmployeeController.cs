@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 using ShfMgmtEg.Core.Dtos.Employee;
@@ -8,6 +9,7 @@ using ShfMgmtEg.Service.EmployeeService;
 
 namespace ShfMgmtEgApi.Controllers;
 
+[Authorize(Roles = "Admin")]
 [Route("api/[controller]")]
 [ApiController]
 public class EmployeeController : Controller
@@ -22,7 +24,7 @@ public class EmployeeController : Controller
     
     // GET,
     [HttpGet]
-    public async Task<ActionResult<ServiceResponse<List<Employee>>>> Get()
+    public async Task<ActionResult<ServiceResponse<List<GetEmployee>>>> Get()
     {
         return Ok(await _employeeService.GetAllEmployee());
     }
@@ -65,6 +67,21 @@ public class EmployeeController : Controller
     {
         return Ok(await _employeeService.DeleteEmployee(id, deletedBy));
     }
+    
+    [HttpPost("assign")]
+    public async Task<ActionResult<ServiceResponse<string>> > AssignEmployeeToTeam(int employeeId, int teamId)
+    {
+        return Ok(await _employeeService.AssignEmployeeToTeam(employeeId, teamId));
+    }
+    
+    [HttpPost("remove")]
+    
+    public async Task<ActionResult<ServiceResponse<string>> > RemoveEmployeeFromTeam(int employeeId, int teamId)
+    {
+        return Ok(await _employeeService.RemoveEmployeeFromTeam(employeeId, teamId));
+    }
+    
+    
     
     
 }
