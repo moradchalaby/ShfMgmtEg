@@ -7,9 +7,6 @@ public interface IUserService
 {
     Task<ServiceResponse<List<GetUser>>> GetAllUser();
     Task<ServiceResponse<GetUser>> GetUserById(int id);
-    
+
     Task<bool> ExistUser(string user);
-    
-
-
 }

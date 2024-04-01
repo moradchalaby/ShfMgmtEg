@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-
-namespace ShfMgmtEg.Core.Dtos.User;
+﻿namespace ShfMgmtEg.Core.Dtos.User;
 
 public class LoginUser
 {

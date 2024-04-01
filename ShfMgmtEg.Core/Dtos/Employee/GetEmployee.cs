@@ -1,7 +1,4 @@
-﻿using ShfMgmtEg.Core.Dtos.Team;
-using ShfMgmtEg.Core.Dtos.User;
-
-namespace ShfMgmtEg.Core.Dtos.Employee;
+﻿namespace ShfMgmtEg.Core.Dtos.Employee;
 
 public class GetEmployee
 {

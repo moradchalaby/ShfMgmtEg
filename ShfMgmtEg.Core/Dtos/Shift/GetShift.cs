@@ -9,5 +9,4 @@ public class GetShift
     public int? TeamId { get; set; }
     public string? Description { get; set; }
     public int? PeriodicType { get; set; }
-    
 }

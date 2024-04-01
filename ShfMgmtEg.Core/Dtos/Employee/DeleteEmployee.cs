@@ -6,5 +6,4 @@ public class DeleteEmployee
     public bool IsDeleted { get; set; } = true;
     public DateTime DeletedAt { get; set; } = DateTime.Now;
     public string DeletedBy { get; set; }
-    
 }

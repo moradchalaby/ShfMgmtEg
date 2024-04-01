@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using ShfMgmtEg.Core.Entities.Models.Relationships;
+﻿using ShfMgmtEg.Core.Entities.Models.Relationships;
 
 namespace ShfMgmtEg.Core.Entities.Models;
 

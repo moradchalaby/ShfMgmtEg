@@ -6,16 +6,17 @@ using ShfMgmtEg.Data;
 
 namespace ShfMgmtEg.Service.UserService;
 
-public class UserService: IUserService
+public class UserService : IUserService
 {
-    private readonly IMapper _mapper;
     private readonly DataContext _context;
+    private readonly IMapper _mapper;
 
     public UserService(DataContext context, IMapper mapper)
     {
         _context = context;
         _mapper = mapper;
     }
+
     public async Task<ServiceResponse<List<GetUser>>> GetAllUser()
     {
         var response = new ServiceResponse<List<GetUser>>();
@@ -35,7 +36,8 @@ public class UserService: IUserService
 
     public async Task<bool> ExistUser(string param)
     {
-        var exist = await _context.Users.AnyAsync(x => x.Email == param || x.UserName == param || x.PhoneNumber == param);
+        var exist = await _context.Users.AnyAsync(
+            x => x.Email == param || x.UserName == param || x.PhoneNumber == param);
         return exist;
     }
 }

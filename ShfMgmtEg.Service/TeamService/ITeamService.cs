@@ -11,12 +11,10 @@ public interface ITeamService
     Task<ServiceResponse<List<GetTeam>>> AddTeam(AddTeam team);
 
     Task<ServiceResponse<GetTeam>> UpdateTeam(UpdateTeam updatedTeam);
-    
+
     Task<ServiceResponse<DeleteTeam>> DeleteTeam(int id, string deletedBy);
-    
+
     Task<ServiceResponse<string>> AssignTeamToShift(int teamId, int shiftId);
-    
+
     Task<ServiceResponse<string>> UnAssignTeamFromShift(int teamId, int shiftId);
-    
-    
 }

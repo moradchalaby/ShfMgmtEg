@@ -26,7 +26,5 @@ public enum Title
     Technician = 21,
     Advisor = 22,
     Agent = 23,
-    Strategist = 24,
-    
-    
+    Strategist = 24
 }
