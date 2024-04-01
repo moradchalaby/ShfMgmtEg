@@ -18,5 +18,4 @@ public class AutoMapperProfile : Profile
         CreateMap<User, GetUser>();
         CreateMap<Shift, GetShift>();
     }
-    
 }

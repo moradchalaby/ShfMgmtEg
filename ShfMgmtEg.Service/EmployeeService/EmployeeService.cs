@@ -12,11 +12,11 @@ namespace ShfMgmtEg.Service.EmployeeService;
 
 public class EmployeeService : IEmployeeService
 {
-private readonly IMapper _mapper;
-private readonly DataContext _context;
-private IEmployeeService _employeeServiceImplementation;
+    private readonly DataContext _context;
+    private readonly IMapper _mapper;
+    private IEmployeeService _employeeServiceImplementation;
 
-public EmployeeService(IMapper mapper,DataContext context, IEmployeeService employeeServiceImplementation)
+    public EmployeeService(IMapper mapper, DataContext context, IEmployeeService employeeServiceImplementation)
     {
         _mapper = mapper;
         _context = context;
@@ -25,9 +25,8 @@ public EmployeeService(IMapper mapper,DataContext context, IEmployeeService empl
 
     public async Task<ServiceResponse<List<GetEmployee>>> GetAllEmployee()
     {
-        
         var response = new ServiceResponse<List<GetEmployee>>();
-        var employees = await _context.Employees.Include(e=>e.User).Include(e=>e.Team).ToListAsync();
+        var employees = await _context.Employees.Include(e => e.User).Include(e => e.Team).ToListAsync();
         response.Message = "All Employees";
         response.IsSuccess = true;
         response.Data = employees.Select(x =>
@@ -38,13 +37,14 @@ public EmployeeService(IMapper mapper,DataContext context, IEmployeeService empl
             return _mapper.Map<GetEmployee>(x);
         }).ToList();
         return response;
-   
     }
 
     public async Task<ServiceResponse<GetEmployee>> GetEmployeeById(int id)
     {
         var response = new ServiceResponse<GetEmployee>();
-        Employee employee = await _context.Employees.Include(e=>e.User).Include(e=>e.Team).FirstOrDefaultAsync(x => x.Id == id) ?? throw new InvalidOperationException();
+        var employee =
+            await _context.Employees.Include(e => e.User).Include(e => e.Team).FirstOrDefaultAsync(x => x.Id == id) ??
+            throw new InvalidOperationException();
         employee.User = _mapper.Map<User>(employee.User);
         employee.Team = _mapper.Map<Team>(employee.Team);
         response.Data = _mapper.Map<GetEmployee>(employee);
@@ -66,8 +66,9 @@ public EmployeeService(IMapper mapper,DataContext context, IEmployeeService empl
         var response = new ServiceResponse<GetEmployee>();
         try
         {
-            Employee employee = await _context.Employees.FirstOrDefaultAsync(x => x.Id == updatedEmployee.Id) ?? throw new InvalidOperationException();
-            employee = _mapper.Map<UpdateEmployee, Employee>(updatedEmployee, employee);
+            var employee = await _context.Employees.FirstOrDefaultAsync(x => x.Id == updatedEmployee.Id) ??
+                           throw new InvalidOperationException();
+            employee = _mapper.Map(updatedEmployee, employee);
             _context.Employees.Update(employee);
             await _context.SaveChangesAsync();
 
@@ -82,7 +83,7 @@ public EmployeeService(IMapper mapper,DataContext context, IEmployeeService empl
                 });
                 await _context.SaveChangesAsync();
             }
-            
+
             response.Data = _mapper.Map<GetEmployee>(employee);
             response.IsSuccess = true;
             response.Message = "Employee updated";
@@ -92,6 +93,7 @@ public EmployeeService(IMapper mapper,DataContext context, IEmployeeService empl
             response.IsSuccess = false;
             response.Message = ex.Message;
         }
+
         return response;
     }
 
@@ -101,7 +103,8 @@ public EmployeeService(IMapper mapper,DataContext context, IEmployeeService empl
         var response = new ServiceResponse<DeleteEmployee>();
         try
         {
-            Employee employee = await _context.Employees.FirstOrDefaultAsync(x => x.Id == id) ?? throw new InvalidOperationException();
+            var employee = await _context.Employees.FirstOrDefaultAsync(x => x.Id == id) ??
+                           throw new InvalidOperationException();
             if (employee != null)
             {
                 employee.IsDeleted = true;
@@ -109,10 +112,10 @@ public EmployeeService(IMapper mapper,DataContext context, IEmployeeService empl
                 employee.DeletedBy = deletedBy;
                 _context.Employees.Update(employee);
                 await _context.SaveChangesAsync();
-                
+
                 _context.TeamEmployees.RemoveRange(_context.TeamEmployees.Where(x => x.EmployeeId == id));
                 await _context.SaveChangesAsync();
-               
+
                 response.Data = _mapper.Map<DeleteEmployee>(employee);
                 response.IsSuccess = true;
                 response.Message = "Employee deleted";
@@ -128,6 +131,7 @@ public EmployeeService(IMapper mapper,DataContext context, IEmployeeService empl
             response.IsSuccess = false;
             response.Message = ex.Message;
         }
+
         return response;
     }
 

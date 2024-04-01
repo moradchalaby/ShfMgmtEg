@@ -10,11 +10,11 @@ namespace ShfMgmtEg.Service.ShiftService;
 
 public class ShiftService : IShiftService
 {
-private readonly IMapper _mapper;
-private readonly DataContext _context;
-private IShiftService _shiftServiceImplementation;
+    private readonly DataContext _context;
+    private readonly IMapper _mapper;
+    private IShiftService _shiftServiceImplementation;
 
-public ShiftService(IMapper mapper,DataContext context)
+    public ShiftService(IMapper mapper, DataContext context)
     {
         _mapper = mapper;
         _context = context;
@@ -22,12 +22,10 @@ public ShiftService(IMapper mapper,DataContext context)
 
     public async Task<ServiceResponse<List<GetShift>>> GetAllShift()
     {
-        
         var response = new ServiceResponse<List<GetShift>>();
         var shifts = await _context.Shifts.ToListAsync();
         response.Data = shifts.Select(x => _mapper.Map<GetShift>(x)).ToList();
         return response;
-   
     }
 
     public async Task<ServiceResponse<GetShift>> GetShiftById(int id)
@@ -53,7 +51,7 @@ public ShiftService(IMapper mapper,DataContext context)
         var response = new ServiceResponse<GetShift>();
         try
         {
-            Shift shift = await _context.Shifts.FirstOrDefaultAsync(x => x.Id == updatedShift.Id);
+            var shift = await _context.Shifts.FirstOrDefaultAsync(x => x.Id == updatedShift.Id);
             shift = _mapper.Map<UpdateShift, Shift>(updatedShift, shift);
             _context.Shifts.Update(shift);
             await _context.SaveChangesAsync();
@@ -66,6 +64,7 @@ public ShiftService(IMapper mapper,DataContext context)
             response.IsSuccess = false;
             response.Message = ex.Message;
         }
+
         return response;
     }
 
@@ -75,7 +74,7 @@ public ShiftService(IMapper mapper,DataContext context)
         var response = new ServiceResponse<DeleteShift>();
         try
         {
-            Shift shift = await _context.Shifts.FirstOrDefaultAsync(x => x.Id == id);
+            var shift = await _context.Shifts.FirstOrDefaultAsync(x => x.Id == id);
             if (shift != null)
             {
                 shift.IsDeleted = true;
@@ -83,10 +82,10 @@ public ShiftService(IMapper mapper,DataContext context)
                 shift.DeletedBy = deletedBy;
                 _context.Shifts.Update(shift);
                 await _context.SaveChangesAsync();
-                
+
                 _context.ShiftTeams.RemoveRange(_context.ShiftTeams.Where(x => x.ShiftId == id));
                 await _context.SaveChangesAsync();
-                
+
                 response.Data = _mapper.Map<DeleteShift>(shift);
                 response.IsSuccess = true;
                 response.Message = "Shift deleted";
@@ -102,6 +101,7 @@ public ShiftService(IMapper mapper,DataContext context)
             response.IsSuccess = false;
             response.Message = ex.Message;
         }
+
         return response;
     }
 
@@ -112,7 +112,7 @@ public ShiftService(IMapper mapper,DataContext context)
             TeamId = teamId,
             ShiftId = shiftId
         });
-        
+
         _context.SaveChangesAsync();
         return Task.FromResult(new ServiceResponse<string>
         {
@@ -120,7 +120,6 @@ public ShiftService(IMapper mapper,DataContext context)
             IsSuccess = true,
             Message = "Shift assigned to team"
         });
-        
     }
 
     public Task<ServiceResponse<string>> UnAssignShiftFromTeam(int shiftId, int employeeId)

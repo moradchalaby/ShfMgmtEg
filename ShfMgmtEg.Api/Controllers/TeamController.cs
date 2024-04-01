@@ -10,14 +10,13 @@ namespace ShfMgmtEgApi.Controllers;
 [ApiController]
 public class TeamController : Controller
 {
-
     private readonly ITeamService _teamService;
-    
+
     public TeamController(ITeamService teamService)
     {
         _teamService = teamService;
     }
-    
+
     // GET,
     [HttpGet]
     public async Task<ActionResult<ServiceResponse<List<Team>>>> Get()
@@ -29,43 +28,36 @@ public class TeamController : Controller
     [HttpGet("{id}")]
     public async Task<ActionResult<ServiceResponse<Team>>> GetSingle(int id)
     {
-        return  Ok(await _teamService.GetTeamById(id));
+        return Ok(await _teamService.GetTeamById(id));
     }
-    
+
     [HttpPost]
     public async Task<ActionResult<ServiceResponse<Team>>> Add(AddTeam newTeam)
     {
-       
-            
-        return  Ok(await _teamService.AddTeam(newTeam));
-
+        return Ok(await _teamService.AddTeam(newTeam));
     }
-    
+
     [HttpPut]
     public async Task<ActionResult<ServiceResponse<Team>>> Update(UpdateTeam updatedTeam)
     {
         return Ok(await _teamService.UpdateTeam(updatedTeam));
     }
-    
+
     [HttpDelete("{id}")]
     public async Task<ActionResult<ServiceResponse<Team>>> Delete(int id, string deletedBy)
     {
         return Ok(await _teamService.DeleteTeam(id, deletedBy));
     }
-    
+
     [HttpPost("assign")]
     public async Task<ActionResult<ServiceResponse<string>>> AssignTeamToShift(int teamId, int shiftId)
     {
         return Ok(await _teamService.AssignTeamToShift(teamId, shiftId));
     }
-    
+
     [HttpPost("unassign")]
     public async Task<ActionResult<ServiceResponse<string>>> UnAssignTeamFromShift(int teamId, int shiftId)
     {
         return Ok(await _teamService.UnAssignTeamFromShift(teamId, shiftId));
     }
-    
-   
-  
-    
 }

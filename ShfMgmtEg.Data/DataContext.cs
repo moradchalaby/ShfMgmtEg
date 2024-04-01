@@ -1,7 +1,5 @@
 ﻿using System.Text.Json;
-using Bogus;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using ShfMgmtEg.Core.Entities;
 using ShfMgmtEg.Core.Entities.Models;
 using ShfMgmtEg.Core.Entities.Models.Relationships;
@@ -10,11 +8,6 @@ namespace ShfMgmtEg.Data;
 
 public class DataContext : DbContext
 {
-    public DataContext()
-    {
-        
-    }
-
     public DbSet<User> Users { get; set; }
     public DbSet<Employee> Employees { get; set; }
     public DbSet<Team> Teams { get; set; }
@@ -22,7 +15,7 @@ public class DataContext : DbContext
     public DbSet<TeamEmployee> TeamEmployees { get; set; }
     public DbSet<RoleUser> RoleUser { get; set; }
     public DbSet<Role> Roles { get; set; }
-    
+
     public DbSet<ShiftTeam> ShiftTeams { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -90,5 +83,4 @@ public class DataContext : DbContext
                         break;
                 }
     }
-    
 }

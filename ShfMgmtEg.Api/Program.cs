@@ -1,3 +1,4 @@
+using System.Text;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -25,13 +26,13 @@ builder.Services.AddDbContext<DataContext>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(x =>
 {
-    x.SwaggerDoc("v1", new() { Title = "ShfMgmtEg", Version = "v1" });
+    x.SwaggerDoc("v1", new OpenApiInfo { Title = "ShfMgmtEg", Version = "v1" });
     x.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
     {
         Description = "JWT Authorization header using the Bearer scheme. Example: \"Bearer {token}\"",
         Name = "Authorization",
         In = ParameterLocation.Header,
-        Type = SecuritySchemeType.ApiKey,
+        Type = SecuritySchemeType.ApiKey
     });
     x.OperationFilter<SecurityRequirementsOperationFilter>();
 });
@@ -43,7 +44,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuerSigningKey = true,
-            IssuerSigningKey =new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(builder.Configuration.GetSection("AppSettings:Token").Value ?? throw new InvalidOperationException())),
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
+                builder.Configuration.GetSection("AppSettings:Token").Value ?? throw new InvalidOperationException())),
             ValidateIssuer = false,
             ValidateAudience = false
         };
@@ -53,10 +55,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 //Singleton ile eklersek her seferinde aynı instance kullanılır.
 //Transient ile eklersek her seferinde yeni bir instance oluşturur.
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
-builder.Services.AddScoped<IAuthService,AuthService>();
-builder.Services.AddScoped<IUserService,UserService>();
-builder.Services.AddScoped<IValidator<RegisterUser>,RegisterValidation>();
-builder.Services.AddScoped<IValidator<LoginUser>,LoginValidation>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IValidator<RegisterUser>, RegisterValidation>();
+builder.Services.AddScoped<IValidator<LoginUser>, LoginValidation>();
 builder.Services.AddScoped<IShiftService, ShiftService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ITeamService, TeamService>();
@@ -68,7 +70,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    SeedService.Initialize(app.Services,app.Configuration);
+    SeedService.Initialize(app.Services, app.Configuration);
 }
 
 app.UseHttpsRedirection();
@@ -76,8 +78,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
-
 
 
 app.Run();

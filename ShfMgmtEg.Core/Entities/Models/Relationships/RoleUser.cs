@@ -1,6 +1,5 @@
 ﻿namespace ShfMgmtEg.Core.Entities.Models.Relationships;
 
-
 public class RoleUser
 {
     public int RoleId { get; set; }

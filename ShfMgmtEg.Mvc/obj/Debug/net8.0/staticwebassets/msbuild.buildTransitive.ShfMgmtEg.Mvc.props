@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\ShfMgmtEg.Mvc.props" />
+</Project>

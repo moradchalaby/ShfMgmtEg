@@ -11,8 +11,6 @@ public class UpdateEmployee
     public Title Title { get; set; }
     public bool IsDeleted { get; set; } = false;
     public UpdateUser? User { get; set; }
-    
+
     public bool TeamChanged { get; set; } = false;
-    
-    
 }

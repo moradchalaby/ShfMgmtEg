@@ -10,8 +10,7 @@ namespace ShfMgmtEg.Service;
 
 public class SeedService
 {
- 
-    public static void Initialize(IServiceProvider serviceProvider,IConfiguration configuration)
+    public static void Initialize(IServiceProvider serviceProvider, IConfiguration configuration)
     {
         using (var context = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope().ServiceProvider
                    .GetService<DataContext>())
@@ -19,29 +18,27 @@ public class SeedService
             if (!context.Users.Any()) InitializeA(context, configuration);
 
             if (context.Users.Any()) Initialize1(context);
-            
+
             if (!context.Roles.Any()) Initialize2(context);
-            
+
             if (!context.RoleUser.Any()) Initialize3(context);
-            
+
             if (!context.Teams.Any()) Initialize4(context);
-            
+
             if (!context.Employees.Any()) Initialize5(context);
-            
+
             if (!context.TeamEmployees.Any()) Initialize6(context);
-            
+
             if (!context.Shifts.Any()) Initialize7(context);
-            
+
             if (!context.ShiftTeams.Any()) Initialize8(context);
-            
-            
         }
     }
 
-    private static void InitializeA(DataContext context,IConfiguration configuration)
+    private static void InitializeA(DataContext context, IConfiguration configuration)
     {
-    var authservice = new AuthService.AuthService(context, configuration);
-    authservice.CreatePasswordHash("123456", out var passwordHash, out var passwordSalt);
+        var authservice = new AuthService.AuthService(context, configuration);
+        authservice.CreatePasswordHash("123456", out var passwordHash, out var passwordSalt);
         var user = new User
         {
             FirstName = "Admin",
@@ -73,7 +70,7 @@ public class SeedService
             .RuleFor(x => x.CreatedAt, f => f.Date.Past())
             .RuleFor(x => x.UpdatedAt, f => f.Date.Past())
             .Generate(25);
-      context.Users.AddRange(data);
+        context.Users.AddRange(data);
 
         context.SaveChanges();
     }
@@ -99,8 +96,8 @@ public class SeedService
     private static void Initialize3(DataContext context)
     {
         var roleUsers = new Faker<RoleUser>()
-            .RuleFor(x => x.RoleId, f => f.Random.Int(1,2))
-            .RuleFor(x => x.UserId, f => f.IndexVariable++ +2)
+            .RuleFor(x => x.RoleId, f => f.Random.Int(1, 2))
+            .RuleFor(x => x.UserId, f => f.IndexVariable++ + 2)
             .Generate(25);
         context.AddRange(
             new RoleUser
@@ -108,7 +105,7 @@ public class SeedService
                 RoleId = 1,
                 UserId = 1
             }
-            );
+        );
         context.RoleUser.AddRange(
             roleUsers
         );
@@ -133,7 +130,7 @@ public class SeedService
     private static void Initialize5(DataContext context)
     {
         var employees = new Faker<Employee>()
-            .RuleFor(x => x.UserId, f => f.IndexVariable++  + 1)
+            .RuleFor(x => x.UserId, f => f.IndexVariable++ + 1)
             .RuleFor(x => x.TeamId, f => f.Random.Int(1, 5))
             .RuleFor(x => x.Code, f => f.Random.String2(5))
             .Generate(25);
@@ -146,8 +143,8 @@ public class SeedService
     private static void Initialize6(DataContext context)
     {
         var teamEmployees = new Faker<TeamEmployee>()
-            .RuleFor(x => x.TeamId, f => f.Random.Int(1,5))
-            .RuleFor(x => x.EmployeeId, f => f.IndexVariable++  + 1)
+            .RuleFor(x => x.TeamId, f => f.Random.Int(1, 5))
+            .RuleFor(x => x.EmployeeId, f => f.IndexVariable++ + 1)
             .Generate(25);
         context.TeamEmployees.AddRange(
             teamEmployees
@@ -175,7 +172,7 @@ public class SeedService
     {
         var shiftTeams = new Faker<ShiftTeam>()
             .RuleFor(x => x.ShiftId, f => f.IndexVariable++ + 1)
-            .RuleFor(x => x.TeamId, f => f.Random.Int(1,5))
+            .RuleFor(x => x.TeamId, f => f.Random.Int(1, 5))
             .Generate(25);
 
         context.ShiftTeams.AddRange(

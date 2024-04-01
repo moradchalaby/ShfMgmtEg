@@ -1,0 +1,128 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\CHALABY\\Desktop\\Develop\\dotNet\\ShfMgmtEg\\Core\\Core.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\CHALABY\\Desktop\\Develop\\dotNet\\ShfMgmtEg\\Core\\Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\CHALABY\\Desktop\\Develop\\dotNet\\ShfMgmtEg\\Core\\Core.csproj",
+        "projectName": "Core",
+        "projectPath": "C:\\Users\\CHALABY\\Desktop\\Develop\\dotNet\\ShfMgmtEg\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\CHALABY\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\CHALABY\\Desktop\\Develop\\dotNet\\ShfMgmtEg\\Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\CHALABY\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\CHALABY\\Desktop\\Develop\\dotNet\\ShfMgmtEg\\Services\\Services.csproj": {
+                "projectPath": "C:\\Users\\CHALABY\\Desktop\\Develop\\dotNet\\ShfMgmtEg\\Services\\Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\CHALABY\\Desktop\\Develop\\dotNet\\ShfMgmtEg\\Services\\Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\CHALABY\\Desktop\\Develop\\dotNet\\ShfMgmtEg\\Services\\Services.csproj",
+        "projectName": "Services",
+        "projectPath": "C:\\Users\\CHALABY\\Desktop\\Develop\\dotNet\\ShfMgmtEg\\Services\\Services.csproj",
+        "packagesPath": "C:\\Users\\CHALABY\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\CHALABY\\Desktop\\Develop\\dotNet\\ShfMgmtEg\\Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\CHALABY\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

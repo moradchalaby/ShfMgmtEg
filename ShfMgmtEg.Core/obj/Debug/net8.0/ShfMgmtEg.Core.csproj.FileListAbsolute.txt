@@ -1,0 +1,13 @@
+C:\Users\CHALABY\Desktop\Develop\dotNet\ShfMgmtEg\ShfMgmtEg.Core\bin\Debug\net8.0\ShfMgmtEg.Core.deps.json
+C:\Users\CHALABY\Desktop\Develop\dotNet\ShfMgmtEg\ShfMgmtEg.Core\bin\Debug\net8.0\ShfMgmtEg.Core.dll
+C:\Users\CHALABY\Desktop\Develop\dotNet\ShfMgmtEg\ShfMgmtEg.Core\bin\Debug\net8.0\ShfMgmtEg.Core.pdb
+C:\Users\CHALABY\Desktop\Develop\dotNet\ShfMgmtEg\ShfMgmtEg.Core\obj\Debug\net8.0\ShfMgmtEg.Core.csproj.AssemblyReference.cache
+C:\Users\CHALABY\Desktop\Develop\dotNet\ShfMgmtEg\ShfMgmtEg.Core\obj\Debug\net8.0\ShfMgmtEg.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\CHALABY\Desktop\Develop\dotNet\ShfMgmtEg\ShfMgmtEg.Core\obj\Debug\net8.0\ShfMgmtEg.Core.AssemblyInfoInputs.cache
+C:\Users\CHALABY\Desktop\Develop\dotNet\ShfMgmtEg\ShfMgmtEg.Core\obj\Debug\net8.0\ShfMgmtEg.Core.AssemblyInfo.cs
+C:\Users\CHALABY\Desktop\Develop\dotNet\ShfMgmtEg\ShfMgmtEg.Core\obj\Debug\net8.0\ShfMgmtEg.Core.csproj.CoreCompileInputs.cache
+C:\Users\CHALABY\Desktop\Develop\dotNet\ShfMgmtEg\ShfMgmtEg.Core\obj\Debug\net8.0\ShfMgmtEg.Core.sourcelink.json
+C:\Users\CHALABY\Desktop\Develop\dotNet\ShfMgmtEg\ShfMgmtEg.Core\obj\Debug\net8.0\ShfMgmtEg.Core.dll
+C:\Users\CHALABY\Desktop\Develop\dotNet\ShfMgmtEg\ShfMgmtEg.Core\obj\Debug\net8.0\refint\ShfMgmtEg.Core.dll
+C:\Users\CHALABY\Desktop\Develop\dotNet\ShfMgmtEg\ShfMgmtEg.Core\obj\Debug\net8.0\ShfMgmtEg.Core.pdb
+C:\Users\CHALABY\Desktop\Develop\dotNet\ShfMgmtEg\ShfMgmtEg.Core\obj\Debug\net8.0\ref\ShfMgmtEg.Core.dll

@@ -2,7 +2,6 @@
 
 namespace ShfMgmtEg.Core.Enums;
 
-
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum Periot
 {
@@ -10,6 +9,5 @@ public enum Periot
     AllWeek = 2,
     AllMonth = 3,
     AllYear = 4,
-    False = 0,
-    
+    False = 0
 }
